@@ -1,27 +1,35 @@
 package br.com.jluna.tarefas.entities;
 
-import java.time.LocalDate;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
-import lombok.Data;
-
-@Data
 @Entity
-@Table(name = "responsavel")
-public class Responsavel {
+public class Lista {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
 
-	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private LocalDate dtCriacao;
+	public Lista() {
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
 }

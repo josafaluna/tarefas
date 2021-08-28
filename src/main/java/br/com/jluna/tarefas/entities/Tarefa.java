@@ -1,10 +1,7 @@
 package br.com.jluna.tarefas.entities;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,9 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.Data;
-
-@Data
 @Entity
 @Table(name = "tarefa")
 public class Tarefa implements Serializable {
@@ -25,24 +19,74 @@ public class Tarefa implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private Lista lista;
 	private String titulo;
-	private String subTitulo;
-	private String autor;
-
-	@Column(columnDefinition = "TEXT")
-	private String detalhe;
+	private String detalhes;
+	private Status status;
 
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private LocalDate dtCriacao;
+	private LocalDateTime dtHoraInicio;
 
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private LocalDateTime dtInicio;
+	private LocalDateTime dtHoraFim;
 
-	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private LocalDateTime dtFim;
-	private StatusTarefa status;
-	private Responsavel responsavel;
+	public Tarefa() {
+	}
 
-	private Set<Tarefa> tags = new HashSet<Tarefa>();
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Lista getLista() {
+		return lista;
+	}
+
+	public void setLista(Lista lista) {
+		this.lista = lista;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public String getDetalhes() {
+		return detalhes;
+	}
+
+	public void setDetalhes(String detalhes) {
+		this.detalhes = detalhes;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	public LocalDateTime getDtHoraInicio() {
+		return dtHoraInicio;
+	}
+
+	public void setDtHoraInicio(LocalDateTime dtHoraInicio) {
+		this.dtHoraInicio = dtHoraInicio;
+	}
+
+	public LocalDateTime getDtHoraFim() {
+		return dtHoraFim;
+	}
+
+	public void setDtHoraFim(LocalDateTime dtHoraFim) {
+		this.dtHoraFim = dtHoraFim;
+	}
 
 }
