@@ -4,8 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "lista")
 public class Lista {
 
 	@Id
@@ -14,6 +16,11 @@ public class Lista {
 	private String nome;
 
 	public Lista() {
+	}
+
+	public Lista(String nome) {
+		super();
+		this.nome = nome;
 	}
 
 	public Long getId() {

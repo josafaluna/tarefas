@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,8 +20,10 @@ public class Tarefa implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Lista lista;
+
 	private String titulo;
+
+	@Column(columnDefinition = "TEXT")
 	private String detalhes;
 	private Status status;
 
@@ -29,6 +32,9 @@ public class Tarefa implements Serializable {
 
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private LocalDateTime dtHoraFim;
+
+	@ManyToOne
+	private Lista lista;
 
 	public Tarefa() {
 	}
